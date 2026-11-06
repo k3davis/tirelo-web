@@ -157,6 +157,19 @@ body.then main strong { font-weight: 700; }
 .features li { background: var(--surface); border-radius: 12px; padding: 12px 14px; margin: 0; }
 .features strong { display: block; }
 
+ol { margin: 0 0 14px; padding-left: 22px; }
+
+.button {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--link);
+  color: #FFFFFF;
+  font-weight: 600;
+  text-decoration: none;
+}
+.button:hover { filter: brightness(1.15); }
+
 .badge {
   display: inline-block;
   padding: 4px 10px;
