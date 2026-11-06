@@ -1,0 +1,168 @@
+/* Tirelo site. Always light. Colours and type follow the tirelo brand.
+   Fonts are self-hosted so no page calls a third party. Then's product pages add body.then, which
+   switches their content to the Then brand (Figtree, Then blue/amber) inside the tirelo header and footer. */
+@font-face {
+  font-family: "Parkinsans";
+  src: url("parkinsans-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Parkinsans";
+  src: url("parkinsans-500.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Parkinsans";
+  src: url("parkinsans-600.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Figtree";
+  src: url("figtree.ttf") format("truetype");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+:root {
+  /* tirelo brand */
+  --slate: #34424A;
+  --sage: #7E9C82;
+  --mist: #86A3BB;
+  --paper: #F2F3F1;
+  --deep: #273238;
+
+  --ink: var(--slate);
+  --muted: #56656D;
+  --bg: var(--paper);
+  --surface: #FFFFFF;
+  --line: #D9DEDB;
+  --link: var(--slate);
+  --link-line: var(--sage);
+  --accent: var(--sage);
+  --brand-font: "Parkinsans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.6 var(--brand-font);
+}
+
+a {
+  color: var(--link);
+  text-decoration-color: var(--link-line);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:hover { text-decoration-color: currentColor; }
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+
+/* Header and footer always carry the tirelo brand, including on Then's pages. */
+header.site, footer.site { font-family: var(--brand-font); }
+
+header.site {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+header.site a.home { display: block; line-height: 0; }
+/* 38px tall = ~121px wide: the smallest size for the full wordmark (below 120px use the -small file) */
+header.site a.home img { height: 38px; width: auto; }
+header.site .tagline { color: var(--muted); font-size: .95rem; letter-spacing: .03em; }
+header.site nav a { margin-left: 16px; color: var(--slate); text-decoration-color: var(--sage); }
+
+main.wrap { padding: 36px 16px 56px; }
+
+h1 { font-size: 2.1rem; font-weight: 500; line-height: 1.2; letter-spacing: -.01em; margin: 0 0 14px; }
+h2 { font-size: 1.3rem; font-weight: 500; margin: 40px 0 10px; }
+/* the dot on the "i", echoed on section headings */
+h2::before {
+  content: "";
+  display: inline-block;
+  width: .38em;
+  height: .38em;
+  margin-right: .45em;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: .12em;
+}
+strong { font-weight: 600; }
+p, ul { margin: 0 0 14px; }
+ul { padding-left: 22px; }
+li { margin-bottom: 6px; }
+
+.lead { font-size: 1.15rem; color: var(--muted); }
+.muted { color: var(--muted); }
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  margin: 20px 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .15s;
+}
+.card:hover { border-color: var(--sage); }
+.card img { width: 56px; height: 56px; flex: none; }
+.card strong { display: block; font-size: 1.1rem; }
+.card span { color: var(--muted); }
+
+footer.site {
+  border-top: 1px solid var(--line);
+  padding: 20px 0 32px;
+  font-size: .9rem;
+  color: var(--muted);
+}
+footer.site .wrap { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+footer.site img.mark { width: 22px; height: 22px; flex: none; }
+footer.site a { color: var(--muted); }
+
+@media (max-width: 480px) {
+  header.site .tagline { display: none; }
+  h1 { font-size: 1.8rem; }
+}
+
+/* ---------- Then product pages ---------- */
+body.then {
+  --then-blue: #0F4C81;
+  --then-amber: #F2A33A;
+  --link: var(--then-blue);
+  --link-line: currentColor;
+  --accent: var(--then-amber);
+}
+body.then main { font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+body.then main h1, body.then main h2 { font-weight: 700; letter-spacing: 0; }
+body.then main strong { font-weight: 700; }
+
+.hero { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
+.hero img.icon { width: 72px; height: 72px; flex: none; }
+.hero img.wordmark { height: 40px; width: auto; display: block; margin-bottom: 6px; }
+
+.features { list-style: none; padding: 0; display: grid; gap: 10px; }
+.features li { background: var(--surface); border-radius: 12px; padding: 12px 14px; margin: 0; }
+.features strong { display: block; }
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--then-amber, #F2A33A);
+  color: #14202B;
+  font-weight: 600;
+  font-size: .9rem;
+}
